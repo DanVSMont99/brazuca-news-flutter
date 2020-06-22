@@ -1,3 +1,4 @@
+import 'package:brazucaNews/screens/news_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -54,6 +55,7 @@ class NewsItem extends StatelessWidget {
         ),
       ),
       onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => NewsScreen(snapshot, index)));
       },
     );
   }
