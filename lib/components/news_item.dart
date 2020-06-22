@@ -13,7 +13,6 @@ class NewsItem extends StatelessWidget {
     return GestureDetector(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        // padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10)
@@ -51,12 +50,6 @@ class NewsItem extends StatelessWidget {
                 ),
               ),
             ),
-            // Row(
-            //   children: <Widget>[
-            //     Icon(iconCategory),
-            //      Text(category)
-            //   ],
-            // )
           ],
         ),
       ),

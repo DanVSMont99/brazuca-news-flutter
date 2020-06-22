@@ -50,13 +50,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 return NewsItem(
                   snapshot,
                   index,
-                  // iconCategory: null, 
-                  // category: snapshot.data['articles'][index]['title']  == null ? 'ta errado' :  snapshot.data['articles'][index]['title']
-                  // description: snapshot.data['articles'][index]['title']  == null ? 'ta errado' :  snapshot.data['articles'][index]['title']
                 );
               },
             );
-              // return NewsItem();
           }
         },
       ),
