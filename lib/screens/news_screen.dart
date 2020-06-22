@@ -24,59 +24,61 @@ class NewsScreen extends StatelessWidget {
         title: Text(snapshot.data['articles'][index]['source']['name']),
         centerTitle: true,
       ),
-      body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            FadeInImage.memoryNetwork( 
-              placeholder: kTransparentImage,
-              image: snapshot.data['articles'][index]['urlToImage'],
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 10, 8, 4),
-              child: Text(
-                snapshot.data['articles'][index]['title'],
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w600
-                ),
+      body: SingleChildScrollView(
+              child: Container(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FadeInImage.memoryNetwork( 
+                placeholder: kTransparentImage,
+                image: snapshot.data['articles'][index]['urlToImage'],
+                fit: BoxFit.cover,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                snapshot.data['articles'][index]['description'],
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                 "Autor: ${snapshot.data['articles'][index]['author'] == null ? snapshot.data['articles'][index]['source']['name'] : snapshot.data['articles'][index]['author']}" 
-              ),
-            ),
-            Center(
-              child: InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
-                  child: Text(
-                    "Matéria Completa",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold
-                    ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 10, 8, 4),
+                child: Text(
+                  snapshot.data['articles'][index]['title'],
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600
                   ),
                 ),
-                onTap: () {
-                  _launchURL(snapshot.data['articles'][index]['url']);
-                },
               ),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  snapshot.data['articles'][index]['description'],
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                   "Autor: ${snapshot.data['articles'][index]['author'] == null ? snapshot.data['articles'][index]['source']['name'] : snapshot.data['articles'][index]['author']}" 
+                ),
+              ),
+              Center(
+                child: InkWell(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30.0, bottom: 30),
+                    child: Text(
+                      "Matéria Completa",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ),
+                  onTap: () {
+                    _launchURL(snapshot.data['articles'][index]['url']);
+                  },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
