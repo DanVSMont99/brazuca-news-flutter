@@ -1,3 +1,4 @@
+import 'package:brazucaNews/category_enum.dart';
 import 'package:brazucaNews/components/news_item.dart';
 import 'package:brazucaNews/service/news_service.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,20 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final newsService = NewsService();
 
+  _selectCategory(Category result) {
+    setState(() {
+      switch(result){
+      case Category.general : return newsService.category  = 'general';
+      case Category.business : return newsService.category = 'business';
+      case Category.entertainment : return newsService.category = 'entertainment';
+      case Category.health : return newsService.category = 'health';
+      case Category.science : return newsService.category = 'science';
+      case Category.sports : return newsService.category = 'sports';
+      case Category.technology : return newsService.category = 'technology';
+    }
+    });
+}
+
   @override
   void initState() {
     newsService.getNews().then((value) => print(value));
@@ -24,6 +39,39 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('News Brasuca'),
         centerTitle: true,
+        actions: [
+            // IconButton(
+            //   icon: Icon(Icons.more_vert),
+            //   onPressed: () {
+
+            //   },
+            // ),
+            PopupMenuButton<Category>(itemBuilder: (context) => <PopupMenuEntry<Category>>[
+              const PopupMenuItem<Category>(child: Text('Geral'),
+              value: Category.general,    
+              ),
+              const PopupMenuItem<Category>(child: Text('Negócios'),
+              value: Category.business,    
+              ),
+              const PopupMenuItem<Category>(child: Text('Esportes'),
+              value: Category.sports,    
+              ),
+              const PopupMenuItem<Category>(child: Text('Saúde'),
+              value: Category.health,    
+              ),
+              const PopupMenuItem<Category>(child: Text('Entreterimento'),
+              value: Category.entertainment,    
+              ),
+              const PopupMenuItem<Category>(child: Text('Tecnologia'),
+              value: Category.technology,    
+              ),
+              const PopupMenuItem<Category>(child: Text('Ciência'),
+              value: Category.science,    
+              )
+            ],
+            onSelected: _selectCategory,
+          )
+        ],
       ),
       body: FutureBuilder(
         future: newsService.getNews(),
