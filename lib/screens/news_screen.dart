@@ -21,7 +21,8 @@ class NewsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(snapshot.data['articles'][index]['source']['name']),
+        title: Text(snapshot.data.articles[index].source.name),
+        // snapshot.data['articles'][index]['source']['name']
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -31,13 +32,13 @@ class NewsScreen extends StatelessWidget {
             children: [
               FadeInImage.memoryNetwork( 
                 placeholder: kTransparentImage,
-                image: snapshot.data['articles'][index]['urlToImage'],
+                image: snapshot.data.articles[index].urlToImage,
                 fit: BoxFit.cover,
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 10, 8, 4),
                 child: Text(
-                  snapshot.data['articles'][index]['title'],
+                  snapshot.data.articles[index].title,
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w600
@@ -47,7 +48,7 @@ class NewsScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  snapshot.data['articles'][index]['description'],
+                  snapshot.data.articles[index].description,
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -56,7 +57,7 @@ class NewsScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                   "Autor: ${snapshot.data['articles'][index]['author'] == null ? snapshot.data['articles'][index]['source']['name'] : snapshot.data['articles'][index]['author']}" 
+                   "Autor: ${snapshot.data.articles[index].author == null ? snapshot.data.articles[index].source.name : snapshot.data.articles[index].author}" 
                 ),
               ),
               Center(
@@ -73,7 +74,7 @@ class NewsScreen extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    _launchURL(snapshot.data['articles'][index]['url']);
+                    _launchURL(snapshot.data.articles[index].url);
                   },
                 ),
               )

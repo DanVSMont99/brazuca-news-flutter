@@ -38,9 +38,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // TODO Add um ícone
         title: Text('News Brasuca'),
         centerTitle: true,
         actions: [
+          // TODO Trocar botão de categorias
             // IconButton(
             //   icon: Icon(Icons.more_vert),
             //   onPressed: () {
@@ -91,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
             );
             default:
             if (snapshot.hasError)
+            // TODO Add img erro 
               return Container( child: Center(child: Text('Errou'),),);
             else
             return ListView.builder(

@@ -24,6 +24,7 @@ class NewsItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
                 child: FadeInImage.memoryNetwork( 
+                  // TODO Add placeholder img
                   placeholder: kTransparentImage,
                   image: snapshot.data.articles[index].urlToImage != null ? snapshot.data.articles[index].urlToImage : 'https://firebasestorage.googleapis.com/v0/b/chatflutter-36b9a.appspot.com/o/2.png?alt=media&token=03dc5578-dd4d-4084-ab92-38ad1c151a42',
                   fit: BoxFit.cover,
@@ -55,7 +56,7 @@ class NewsItem extends StatelessWidget {
         ),
       ),
       onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => NewsScreen(snapshot, index)));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => NewsScreen(snapshot, index)));
       },
     );
   }

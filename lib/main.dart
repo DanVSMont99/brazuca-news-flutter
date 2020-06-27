@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark
       ),
+      // TODO Add splash screen
       home: HomeScreen(),
     );
   }
