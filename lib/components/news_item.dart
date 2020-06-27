@@ -4,8 +4,8 @@ import 'package:transparent_image/transparent_image.dart';
 
 class NewsItem extends StatelessWidget {
 
-  final AsyncSnapshot snapshot;
-  final int index;
+  AsyncSnapshot snapshot;
+  int index;
 
   NewsItem(this.snapshot, this.index);
 
@@ -25,14 +25,14 @@ class NewsItem extends StatelessWidget {
                 borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
                 child: FadeInImage.memoryNetwork( 
                   placeholder: kTransparentImage,
-                  image: snapshot.data['articles'][index]['urlToImage'],
+                  image: snapshot.data.articles[index].urlToImage != null ? snapshot.data.articles[index].urlToImage : 'https://firebasestorage.googleapis.com/v0/b/chatflutter-36b9a.appspot.com/o/2.png?alt=media&token=03dc5578-dd4d-4084-ab92-38ad1c151a42',
                   fit: BoxFit.cover,
                 ),
               ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10 ,10, 10, 4),
               child: Text(
-                snapshot.data['articles'][index]['title'], 
+                snapshot.data.articles[index].title, 
                 style: TextStyle(
                   color: Colors.black87,
                   fontSize: 18,
@@ -43,7 +43,7 @@ class NewsItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               child: Text(
-                snapshot.data['articles'][index]['description'],
+                snapshot.data.articles[index].description,
                 style: TextStyle(
                   color: Colors.grey[800],
                   fontSize: 14,
@@ -55,7 +55,7 @@ class NewsItem extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => NewsScreen(snapshot, index)));
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => NewsScreen(snapshot, index)));
       },
     );
   }

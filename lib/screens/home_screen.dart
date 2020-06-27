@@ -8,10 +8,8 @@ class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
-
+  
 class _HomeScreenState extends State<HomeScreen> {
-
-  final newsService = NewsService();
 
   _selectCategory(Category result) {
     setState(() {
@@ -27,11 +25,14 @@ class _HomeScreenState extends State<HomeScreen> {
     });
 }
 
-  @override
-  void initState() {
-    newsService.getNews().then((value) => print(value));
-    super.initState();
-  }
+  final newsService = NewsService();
+  
+  // getInfoNews() async {
+  //   news = await newsService.getNews();
+  // }
+
+  // Future<News> news;
+  // News news;
 
   @override
   Widget build(BuildContext context) {
@@ -90,14 +91,16 @@ class _HomeScreenState extends State<HomeScreen> {
             );
             default:
             if (snapshot.hasError)
-              return Container( child: Center(child: Text('errou'),),);
+              return Container( child: Center(child: Text('Errou'),),);
             else
             return ListView.builder(
-              itemCount: snapshot.data['articles'].length,
+              itemCount: snapshot.data.articles.length,
               itemBuilder: (context, index) {
                 return NewsItem(
-                  snapshot,
-                  index,
+                  snapshot, index
+                  // image: snapshot.data.articles[index].urlToImage,
+                  // title: snapshot.data.articles[index].title,
+                  // description: snapshot.data.articles[index].description,
                 );
               },
             );
