@@ -106,10 +106,9 @@ class _HomeScreenState extends State<HomeScreen> {
               );
             default:
               if (snapshot.hasError)
-                // TODO Add img erro
                 return Container(
                   child: Center(
-                    child: Text('Errou'),
+                    child: Image.asset('assets/images/error.png'),
                   ),
                 );
               else

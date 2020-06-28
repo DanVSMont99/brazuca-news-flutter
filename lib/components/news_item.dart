@@ -1,6 +1,5 @@
 import 'package:brazucaNews/screens/news_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class NewsItem extends StatelessWidget {
   final AsyncSnapshot snapshot;
@@ -23,11 +22,10 @@ class NewsItem extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
               child: FadeInImage.assetNetwork(
-                // TODO Add placeholder img
-                placeholder: 'assets/images/placeholder.png',
+                placeholder: 'assets/images/placeholder_bg.png',
                 image: snapshot.data.articles[index].urlToImage != null
                     ? snapshot.data.articles[index].urlToImage
-                    : 'assets/images/placeholder.png',
+                    : 'assets/images/placeholder_bg.png',
                 fit: BoxFit.cover,
               ),
             ),
