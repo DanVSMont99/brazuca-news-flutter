@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class NewsItem extends StatelessWidget {
-
-  AsyncSnapshot snapshot;
-  int index;
+  final AsyncSnapshot snapshot;
+  final int index;
 
   NewsItem(this.snapshot, this.index);
 
@@ -13,32 +12,34 @@ class NewsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
+        // height: 230,
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10)
-          ),
+            color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: <Widget>[
             // Image.network(image),
-              ClipRRect(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                child: FadeInImage.memoryNetwork( 
-                  // TODO Add placeholder img
-                  placeholder: kTransparentImage,
-                  image: snapshot.data.articles[index].urlToImage != null ? snapshot.data.articles[index].urlToImage : 'https://firebasestorage.googleapis.com/v0/b/chatflutter-36b9a.appspot.com/o/2.png?alt=media&token=03dc5578-dd4d-4084-ab92-38ad1c151a42',
-                  fit: BoxFit.cover,
-                ),
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+              child: FadeInImage.assetNetwork(
+                // TODO Add placeholder img
+                placeholder: 'assets/images/placeholder.png',
+                image: snapshot.data.articles[index].urlToImage != null
+                    ? snapshot.data.articles[index].urlToImage
+                    : 'assets/images/placeholder.png',
+                fit: BoxFit.cover,
               ),
+            ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(10 ,10, 10, 4),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 4),
               child: Text(
-                snapshot.data.articles[index].title, 
+                snapshot.data.articles[index].title,
+                textAlign: TextAlign.start,
                 style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600
-                ),
+                    color: Colors.black87,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600),
               ),
             ),
             Padding(
@@ -47,7 +48,7 @@ class NewsItem extends StatelessWidget {
                 snapshot.data.articles[index].description,
                 style: TextStyle(
                   color: Colors.grey[800],
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -56,7 +57,10 @@ class NewsItem extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => NewsScreen(snapshot, index)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => NewsScreen(snapshot, index)));
       },
     );
   }
