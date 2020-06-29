@@ -30,10 +30,14 @@ class NewsScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FadeInImage.memoryNetwork( 
-                placeholder: kTransparentImage,
-                image: snapshot.data.articles[index].urlToImage,
-                fit: BoxFit.cover,
+              Center(
+                child: FadeInImage.memoryNetwork( 
+                  placeholder: kTransparentImage,
+                  image: snapshot.data.articles[index].urlToImage != null
+                  ? snapshot.data.articles[index].urlToImage
+                  : 'https://firebasestorage.googleapis.com/v0/b/chatflutter-36b9a.appspot.com/o/placeholder.png?alt=media',
+                  fit: BoxFit.cover,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 10, 8, 4),

@@ -43,8 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // TODO Add um ícone
-        title: Text('News Brasuca'),
+        leading: IconButton(icon: Image.asset('assets/images/logo_icon.png'), onPressed: null),
+        title: Image.asset('assets/images/logo_text.png'),
         centerTitle: true,
         actions: [
           // TODO Trocar botão de categorias

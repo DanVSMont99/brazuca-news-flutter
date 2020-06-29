@@ -18,15 +18,34 @@ class NewsItem extends StatelessWidget {
         child: Column(
           children: <Widget>[
             // Image.network(image),
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-              child: FadeInImage.assetNetwork(
-                placeholder: 'assets/images/placeholder_bg.png',
-                image: snapshot.data.articles[index].urlToImage != null
-                    ? snapshot.data.articles[index].urlToImage
-                    : 'assets/images/placeholder_bg.png',
-                fit: BoxFit.cover,
+            // SizedBox(
+            //   width: 200,
+            //   child: ClipRRect(
+            //     borderRadius: BorderRadius.only(
+            //         topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+            //     child: FadeInImage.assetNetwork(
+            //       placeholder: 'assets/images/placeholder_bg.png',
+            //       image: snapshot.data.articles[index].urlToImage != null
+            //       ? snapshot.data.articles[index].urlToImage
+            //       : 'https://firebasestorage.googleapis.com/v0/b/chatflutter-36b9a.appspot.com/o/error_image.png?alt=media',
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
+            // ),
+            SizedBox(
+              width: 375,
+              height: 200,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10), topRight: Radius.circular(10)
+                ),
+                child: FadeInImage.assetNetwork(
+                  placeholder: 'assets/images/placeholder_bg.png',
+                  image: snapshot.data.articles[index].urlToImage != null
+                  ? snapshot.data.articles[index].urlToImage
+                  : 'https://firebasestorage.googleapis.com/v0/b/chatflutter-36b9a.appspot.com/o/error_image.png?alt=media',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Padding(
@@ -36,14 +55,16 @@ class NewsItem extends StatelessWidget {
                 textAlign: TextAlign.start,
                 style: TextStyle(
                     color: Colors.black87,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600),
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600,
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               child: Text(
                 snapshot.data.articles[index].description,
+                maxLines: 2,
                 style: TextStyle(
                   color: Colors.grey[800],
                   fontSize: 16,
