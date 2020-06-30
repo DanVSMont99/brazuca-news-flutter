@@ -9,7 +9,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  _selectCategory(Category result) {
+
+  void _selectCategory(Category result) {
     setState(() {
       switch (result) {
         case Category.general:
@@ -43,17 +44,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: Image.asset('assets/images/logo_icon.png'), onPressed: null),
+        leading: IconButton(
+            icon: Image.asset('assets/images/logo_icon.png'), onPressed: null),
         title: Image.asset('assets/images/logo_text.png'),
         centerTitle: true,
         actions: [
-          // TODO Trocar botão de categorias
-          // IconButton(
-          //   icon: Icon(Icons.more_vert),
-          //   onPressed: () {
-
-          //   },
-          // ),
+          IconButton(icon: Icon(Icons.search), onPressed: null),
           PopupMenuButton<Category>(
             itemBuilder: (context) => <PopupMenuEntry<Category>>[
               const PopupMenuItem<Category>(
